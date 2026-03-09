@@ -92,6 +92,28 @@ From Base32 — less common but shows up, looks like JJPSWEYA
 
 URL Decode — if you see %4a%5f%2b%18
 
+USE binwalk -e
+
 From Binary — if it's literal 01001010 01011111
 
 From Decimal — if it's numbers like 74 95 43 24
+
+GHIDRA : 
+
+WINDOW -> DEFINED STRINGS
+
+SYMBOL TREE (ON LEFT) LOOK UNDER FUNCTIONS FOR MAIN, READ FOR THE OVERALL FLOW, WHAT IS HAPPENING TO IT
+
+strcmp, strncmp, memcmp — direct comparisons, the expected value is often visible
+
+strlen — tells you the expected input length
+
+atoi, strtol — input is being converted to a number
+
+malloc, calloc — dynamic memory, the size hints at data structure
+
+printf with format strings — look for format string vulnerabilities
+
+rand, srand — if seeded with a predictable value, the "random" numbers are reproducible
+
+Custom functions with loops and XOR — likely encoding/decoding routines
