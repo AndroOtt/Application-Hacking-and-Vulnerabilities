@@ -12,9 +12,13 @@ ffuf -u https://target.com/FUZZ -w /usr/share/wordlists/dirb/common.txt (GET THE
 https://github.com/ffuf/ffuf
 
 -fc 404 — filter out 404 status codes
+
 -fs 1234 — filter by response size (useful when all "not found" pages have the same size)
+
 -fw 50 — filter by word count
+
 -fl 20 — filter by line count
+
 -mc 200,301 — match only specific status codes
 
 '
@@ -63,13 +67,31 @@ xortool
 
 XOR
 for key in range(256):
+
     result = bytes([b ^ key for b in encrypted_data])
+    
     if b"flag" in result or b"http" in result:
+    
         print(f"Key: {hex(key)}, Result: {result}")
 
 ciphertext = b'\x4a\x5f\x2b\x18'
+
 known = b"flag"
+
 key = bytes([c ^ k for c, k in zip(ciphertext, known)])
+
 print(f"Key bytes: {key}")
 
 https://gchq.github.io/CyberChef/
+
+From Hex — if the data looks like 4a5f2b18
+
+From Base64 — if it looks like Sl8rGA==
+
+From Base32 — less common but shows up, looks like JJPSWEYA
+
+URL Decode — if you see %4a%5f%2b%18
+
+From Binary — if it's literal 01001010 01011111
+
+From Decimal — if it's numbers like 74 95 43 24
